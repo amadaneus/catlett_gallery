@@ -9,11 +9,20 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+/public/*
 !/log/.keep
 !/tmp/.keep
 
 /node_modules
 /yarn-error.log
 
-.byebug_history
+/.byebug_history
+
+/.idea
+/config/secrets.yml
+/config/application.yml
+/config/application.yml
+/config/database.yml
+/config/database.production.yml
+/config/secrets.production.yml
+.env
