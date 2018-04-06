@@ -9,9 +9,47 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Elizabeth Catlett</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <%= yield %>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <% @categoryNav.each do |category| %>
+            <li><%= link_to category.name, category_path(category.id), class: 'nav-link' %></li>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="navbar navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Upload Photo', upload_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Add Category', new_category_path, class: 'nav-link' %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="gallery" class="container-fluid">
+      <h2>All Images</h2>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+
+    <footer>
+      <p>Copyright &copy; 2018, Elizabeth Catlett</p>
+    </footer>
+
+
   </body>
 </html>
