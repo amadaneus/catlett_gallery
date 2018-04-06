@@ -1,15 +1,23 @@
-<div class="row">
-  <div class="col-md-3">
-    <div class="photo photo-type-line">
-      <a href="assets/img/ec-1.jpg" class="photo-hover" data-lightbox="my-images" data-title="lorem ipsum">
-        <div class="photo-info">
-          <div class="headline">Lorem Ipsum</div>
-          <div class="line"></div>
-          <div class="desc">Watu wote wamezaliwa huru, hadhi na haki zao ni sawa. Wote wamejaliwa akili na dhamiri, hivyo yapasa watendeane kindugu. </div>
-          <div class="mask"></div>
+<% if @images.exists? %>
+  <% @images.each_slice(4) do |image| %>
+    <div class="row">
+      <% image.each do |image| %>
+        <div class="col-md-3">
+          <div class="photo photo-type-line">
+            <a href="<%= image.image_url() %>" class="photo-hover" data-lightbox="my-images" data-title="<%= image.image_title %>">
+              <div class="photo-info">
+                <div class="headline"><%= image.image_title %></div>
+                <div class="line"></div>
+                <div class="desc"><%= image.description %></div>
+              </div>
+              <div class="mask"></div>
+            </a>
+            <div class="photo-img"><%= image_tag image.image_url(:thumb)%></div>
+          </div>
         </div>
-      </a>
-      <div class="photo-img"><img src="assets/img/ec-1.jpg"></div>
+      <% end %>
     </div>
-  </div>
-</div>
+  <% end %>
+  <% else %>
+  <p>There are no images to show yet... check back soon!</p>
+<% end %>
