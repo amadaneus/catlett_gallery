@@ -18,10 +18,11 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all
+    @categories = Category.all
   end
 
   private
   def image_params
-    params.require(:image).permit(:image, :image_title, :description, :file_size, :content_type, :remote_image_url )
+    params.require(:image).permit(:image, :image_title, :category_id, :description, :file_size, :content_type, :remote_image_url )
   end
 end
